@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.tagtraum.perf.gcviewer.math.DoubleData;
+import com.tagtraum.perf.gcviewer.math.DoubleDataPercentile;
 import com.tagtraum.perf.gcviewer.math.IntData;
 import com.tagtraum.perf.gcviewer.math.RegressionLine;
 import com.tagtraum.perf.gcviewer.model.AbstractGCEvent.CollectionType;
@@ -115,7 +116,7 @@ public class GCModel implements Serializable {
     private double lastPauseTimeStamp = 0;
     private DoubleData totalPause;
     private DoubleData fullGCPause;
-    private DoubleData gcPause; // not full gc but stop the world pause
+    private DoubleDataPercentile gcPause; // not full gc but stop the world pause
     private DoubleData vmOperationPause; // "application stopped"
     private double lastGcPauseTimeStamp = 0;
     private DoubleData pauseInterval; // interval between two stop the world pauses
@@ -151,7 +152,7 @@ public class GCModel implements Serializable {
         this.postGCUsedMemory = new IntData();
         this.totalPause = new DoubleData();
         this.fullGCPause = new DoubleData();
-        this.gcPause = new DoubleData();
+        this.gcPause = new DoubleDataPercentile();
         this.vmOperationPause = new DoubleData();
         this.pauseInterval = new DoubleData();
         this.initiatingOccupancyFraction = new DoubleData();
@@ -190,7 +191,7 @@ public class GCModel implements Serializable {
 
     private void printPauseMap(Map<String, DoubleData> pauseMap) {
         for (Map.Entry<String, DoubleData> entry: pauseMap.entrySet()) {
-            System.out.println(entry.getKey() + " [n, avg, sum, min, max]:\t" + entry.getValue().getN() + "\t" + entry.getValue().average() + "\t" + entry.getValue().getSum() + "\t" + entry.getValue().getMin() + "\t" + entry.getValue().getMax());
+            System.out.println(entry.getKey() + " [n, avg, sum, min, max, 50th, 75th, 95th, 99th]:\t" + entry.getValue().getN() + "\t" + entry.getValue().average() + "\t" + entry.getValue().getSum() + "\t" + entry.getValue().getMin() + "\t" + entry.getValue().getMax() + "\t" + ((DoubleDataPercentile)entry.getValue()).getPercentile(50)+ "\t" + ((DoubleDataPercentile)entry.getValue()).getPercentile(75)+ "\t" + ((DoubleDataPercentile)entry.getValue()).getPercentile(95)+ "\t" + ((DoubleDataPercentile)entry.getValue()).getPercentile(99));
         }
     }
 
@@ -335,7 +336,7 @@ public class GCModel implements Serializable {
     private DoubleData getDoubleData(String key, Map<String, DoubleData> eventMap) {
         DoubleData data = eventMap.get(key);
         if (data == null) {
-            data = new DoubleData();
+            data = new DoubleDataPercentile();
             eventMap.put(key, data);
         }
 
