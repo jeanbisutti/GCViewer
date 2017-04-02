@@ -1,8 +1,6 @@
 package com.tagtraum.perf.gcviewer;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -58,6 +57,7 @@ public class ModelDetailsPanel extends JPanel {
         concurrentGcEventModel = new DoubleDataMapModel();
 
         DoubleDataMapTable gcTable = new DoubleDataMapTable(LocalisationHelper.getString("data_panel_group_gc_pauses"), gcEventModel);
+
         DoubleDataMapTable fullGcTable = new DoubleDataMapTable(LocalisationHelper.getString("data_panel_group_full_gc_pauses"), fullGcEventModel);
         vmOperationTable = new DoubleDataMapTable(LocalisationHelper.getString("data_panel_vm_op_overhead"), vmOperationEventModel);
         DoubleDataMapTable concurrentGcTable = new DoubleDataMapTable(LocalisationHelper.getString("data_panel_group_concurrent_gc_events"), concurrentGcEventModel);
@@ -135,8 +135,11 @@ public class ModelDetailsPanel extends JPanel {
 
             this.setModel(model);
             this.setLayout(new GridBagLayout());
+            // Example Gc pauses
+            TitledBorder titledBorder = BorderFactory.createTitledBorder(title);
+            titledBorder.setTitleFont(FontResizer.increaseFontSize(titledBorder.getTitleFont(), 2.3));
             this.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createTitledBorder(title),
+                    titledBorder,
                     BorderFactory.createEmptyBorder(0,0,0,0)));
         }
 
@@ -205,6 +208,7 @@ public class ModelDetailsPanel extends JPanel {
             GridBagConstraints constraints = createGridBagConstraints();
             constraints.weightx = 1.0;
             for (JLabel label : titleLabels) {
+                FontResizer.smallIncreaseFontSize(label);
                 add(label, constraints);
                 constraints.weightx = 0;
                 constraints.gridx++;
@@ -218,7 +222,10 @@ public class ModelDetailsPanel extends JPanel {
         private List<JLabel> createTitleRow(DoubleDataMapModel model) {
             List<JLabel> titleRow = new ArrayList<JLabel>();
             for (int i = 0; i < model.getColumnCount(); ++i) {
-                titleRow.add(new JLabel(model.getColumnName(i), JLabel.RIGHT));
+                JLabel label = new JLabel(model.getColumnName(i), JLabel.RIGHT);
+//                label.setBorder(BorderFactory.createLineBorder(Color.black));
+                FontResizer.smallIncreaseFontSize(label);
+                titleRow.add(label);
             }
 
             return titleRow;
@@ -235,6 +242,8 @@ public class ModelDetailsPanel extends JPanel {
                 // first label size is flexible
                 constraints.weightx = 1.0;
                 for (JLabel label : labelRow) {
+                    FontResizer.smallIncreaseFontSize(label);
+                    label.setBorder(BorderFactory.createLineBorder(Color.black));
                     add(label, constraints);
                     // the other columns not
                     constraints.weightx = 0;
@@ -266,7 +275,9 @@ public class ModelDetailsPanel extends JPanel {
                 List<JLabel> labelRow = new ArrayList<JLabel>();
                 labelGrid.add(labelRow);
                 for (int columnIndex = 0; columnIndex < model.getColumnCount(); ++columnIndex) {
-                    labelRow.add(new JLabel((String)model.getValueAt(rowIndex, columnIndex), JLabel.RIGHT));
+                    JLabel label = new JLabel((String) model.getValueAt(rowIndex, columnIndex), JLabel.RIGHT);
+                    FontResizer.smallIncreaseFontSize(label);
+                    labelRow.add(label);
                 }
             }
 

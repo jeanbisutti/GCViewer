@@ -1,13 +1,6 @@
 package com.tagtraum.perf.gcviewer;
 
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
@@ -73,6 +66,8 @@ public class ChartPanelView {
         vScrollBar.setUnitIncrement(10);
 
         this.modelChartAndDetailsPanel = new JTabbedPane();
+        this.modelChartAndDetailsPanel.setFont(
+                FontResizer.veryLargeIncreaseFontSize(modelChartAndDetailsPanel.getFont()));
         this.modelChartAndDetailsPanel.addTab(LocalisationHelper.getString("data_panel_tab_chart"), modelChart);
         this.modelChartAndDetailsPanel.addTab(LocalisationHelper.getString("data_panel_tab_details"), modelDetailsScrollPane);
 
@@ -180,7 +175,9 @@ public class ChartPanelView {
             setLayout(new GridBagLayout());
             this.title.setOpaque(false);
             this.title.setHorizontalAlignment(SwingConstants.LEFT);
-            this.title.setFont(this.title.getFont().deriveFont(this.title.getFont().getSize2D()*0.8f));
+            Font font = this.title.getFont().deriveFont(this.title.getFont().getSize2D() * 0.8f);
+
+            this.title.setFont(font);
             //minimize.set
             GridBagConstraints gridBagConstraints = new GridBagConstraints();
             gridBagConstraints.weightx = 2.0;

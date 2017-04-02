@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.border.TitledBorder;
 
 import com.tagtraum.perf.gcviewer.model.GCModel;
 import com.tagtraum.perf.gcviewer.util.LocalisationHelper;
@@ -47,6 +48,8 @@ public class ModelPanel extends JTabbedPane {
 
 
     public ModelPanel() {
+
+        setFont(FontResizer.veryLargeIncreaseFontSize(this.getFont()));
         //setBorder(new TitledBorder(LocalisationHelper.getString("data_panel_title")));
         pauseFormatter = NumberFormat.getInstance();
         pauseFormatter.setMaximumFractionDigits(5);
@@ -138,7 +141,6 @@ public class ModelPanel extends JTabbedPane {
     	
     	public ValuesTab() {
     		super();
-    		
     		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     		labelMap = new HashMap<String, TwoLabelsContainer>();
     	}
@@ -146,8 +148,11 @@ public class ModelPanel extends JTabbedPane {
     	public void newGroup(String name, boolean withBorder) {
     		currentPanel = new JPanel();
     		if (withBorder) {
-	    		currentPanel.setBorder(BorderFactory.createCompoundBorder(
-	                    BorderFactory.createTitledBorder(name),
+                TitledBorder titledBorder = BorderFactory.createTitledBorder(name);
+                // Example: f Total pause
+                titledBorder.setTitleFont(FontResizer.increaseFontSize(titledBorder.getTitleFont(), 2.3));
+                currentPanel.setBorder(BorderFactory.createCompoundBorder(
+                        titledBorder,
 	                    BorderFactory.createEmptyBorder(0,0,0,0)));
     		}
     		
@@ -173,6 +178,7 @@ public class ModelPanel extends JTabbedPane {
     		}
     		
             JLabel nameLabel = new JLabel(name);
+    		FontResizer.largeIncreaseFontSize(nameLabel);
 
             currentConstraints.gridy++;
             currentConstraints.gridx = 0;
@@ -180,6 +186,7 @@ public class ModelPanel extends JTabbedPane {
             currentPanel.add(nameLabel);
             
             JLabel valueLabel = new JLabel("", JLabel.RIGHT);
+            FontResizer.largeIncreaseFontSize(valueLabel);
 
             currentConstraints.gridx = 1;
             currentLayout.setConstraints(valueLabel, currentConstraints);

@@ -482,6 +482,7 @@ public class GCViewerGui extends JFrame {
         menuItemShowDataPanel.setIcon(createEmptyImageIcon(20, 20));
         menuItemShowDataPanel.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_show_data_panel"));
         menuItemShowDataPanel.setActionCommand(GCPreferences.SHOW_DATA_PANEL);
+        FontResizer.largeIncreaseFontSize(menuItemShowDataPanel);
         menuItemShowDataPanel.addActionListener(new ActionListener(){
             public void actionPerformed(final ActionEvent e) {
                 final GCDocument gcDocument = getSelectedGCDocument();
@@ -499,6 +500,7 @@ public class GCViewerGui extends JFrame {
         menuItemShowDateStamp.setIcon(createEmptyImageIcon(20, 20));
         menuItemShowDateStamp.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_show_data_panel"));
         menuItemShowDateStamp.setActionCommand(GCPreferences.SHOW_DATE_STAMP);
+        FontResizer.largeIncreaseFontSize(menuItemShowDateStamp);
         menuItemShowDateStamp.addActionListener(new ActionListener(){
             public void actionPerformed(final ActionEvent e) {
                 final GCDocument gcDocument = getSelectedGCDocument();
@@ -517,6 +519,7 @@ public class GCViewerGui extends JFrame {
         menuItemAntiAlias.setIcon(createEmptyImageIcon(20, 20));
         menuItemAntiAlias.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_antialias"));
         menuItemAntiAlias.setActionCommand(GCPreferences.ANTI_ALIAS);
+        FontResizer.largeIncreaseFontSize(menuItemAntiAlias);
         menuItemAntiAlias.addActionListener(new ActionListener(){
             public void actionPerformed(final ActionEvent e) {
                 final GCDocument gcDocument = getSelectedGCDocument();
@@ -536,6 +539,7 @@ public class GCViewerGui extends JFrame {
         menuItemFullGCLines.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_full_gc_lines"));
         menuItemFullGCLines.setIcon(createMonoColoredImageIcon(FullGCLineRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemFullGCLines.setActionCommand(GCPreferences.FULL_GC_LINES);
+        FontResizer.largeIncreaseFontSize(menuItemFullGCLines);
         menuItemFullGCLines.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemFullGCLines);
         gcLineMenuItems.put(GCPreferences.FULL_GC_LINES, menuItemFullGCLines);
@@ -545,6 +549,7 @@ public class GCViewerGui extends JFrame {
         menuItemIncGCLines.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_inc_gc_lines"));
         menuItemIncGCLines.setIcon(createMonoColoredImageIcon(IncLineRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemIncGCLines.setActionCommand(GCPreferences.INC_GC_LINES);
+        FontResizer.largeIncreaseFontSize(menuItemIncGCLines);
         menuItemIncGCLines.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemIncGCLines);
         gcLineMenuItems.put(GCPreferences.INC_GC_LINES, menuItemIncGCLines);
@@ -554,6 +559,7 @@ public class GCViewerGui extends JFrame {
         menuItemGcTimesLine.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_gc_times_line"));
         menuItemGcTimesLine.setIcon(createMonoColoredImageIcon(GCTimesRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemGcTimesLine.setActionCommand(GCPreferences.GC_LINES_LINE);
+        FontResizer.largeIncreaseFontSize(menuItemGcTimesLine);
         menuItemGcTimesLine.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemGcTimesLine);
         gcLineMenuItems.put(GCPreferences.GC_LINES_LINE, menuItemGcTimesLine);
@@ -563,6 +569,7 @@ public class GCViewerGui extends JFrame {
         menuItemGcTimesRectangle.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_gc_times_rectangles"));
         menuItemGcTimesRectangle.setIcon(createMonoColoredImageIcon(GCRectanglesRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemGcTimesRectangle.setActionCommand(GCPreferences.GC_TIMES_RECTANGLES);
+        FontResizer.largeIncreaseFontSize(menuItemGcTimesRectangle);
         menuItemGcTimesRectangle.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemGcTimesRectangle);
         gcLineMenuItems.put(GCPreferences.GC_TIMES_RECTANGLES, menuItemGcTimesRectangle);
@@ -572,6 +579,7 @@ public class GCViewerGui extends JFrame {
         menuItemTotalMemory.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_total_memory"));
         menuItemTotalMemory.setIcon(createMonoColoredImageIcon(TotalHeapRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemTotalMemory.setActionCommand(GCPreferences.TOTAL_MEMORY);
+        FontResizer.largeIncreaseFontSize(menuItemTotalMemory);
         menuItemTotalMemory.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemTotalMemory);
         gcLineMenuItems.put(GCPreferences.TOTAL_MEMORY, menuItemTotalMemory);
@@ -581,6 +589,7 @@ public class GCViewerGui extends JFrame {
         menuItemTenuredMemory.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_tenured_memory"));
         menuItemTenuredMemory.setIcon(createMonoColoredImageIcon(TotalTenuredRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemTenuredMemory.setActionCommand(GCPreferences.TENURED_MEMORY);
+        FontResizer.largeIncreaseFontSize(menuItemTenuredMemory);
         menuItemTenuredMemory.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemTenuredMemory);
         gcLineMenuItems.put(GCPreferences.TENURED_MEMORY, menuItemTenuredMemory);
@@ -590,6 +599,7 @@ public class GCViewerGui extends JFrame {
         menuItemYoungMemory.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_young_memory"));
         menuItemYoungMemory.setIcon(createMonoColoredImageIcon(TotalYoungRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemYoungMemory.setActionCommand(GCPreferences.YOUNG_MEMORY);
+        FontResizer.largeIncreaseFontSize(menuItemYoungMemory);
         menuItemYoungMemory.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemYoungMemory);
         gcLineMenuItems.put(GCPreferences.YOUNG_MEMORY, menuItemYoungMemory);
@@ -599,6 +609,7 @@ public class GCViewerGui extends JFrame {
         menuItemUsedMemory.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_used_memory"));
         menuItemUsedMemory.setIcon(createMonoColoredImageIcon(UsedHeapRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemUsedMemory.setActionCommand(GCPreferences.USED_MEMORY);
+        FontResizer.largeIncreaseFontSize(menuItemUsedMemory);
         menuItemUsedMemory.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemUsedMemory);
         gcLineMenuItems.put(GCPreferences.USED_MEMORY, menuItemUsedMemory);
@@ -608,6 +619,7 @@ public class GCViewerGui extends JFrame {
         menuItemUsedTenuredMemory.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_used_tenured_memory"));
         menuItemUsedTenuredMemory.setIcon(createMonoColoredImageIcon(UsedTenuredRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemUsedTenuredMemory.setActionCommand(GCPreferences.USED_TENURED_MEMORY);
+        FontResizer.largeIncreaseFontSize(menuItemUsedTenuredMemory);
         menuItemUsedTenuredMemory.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemUsedTenuredMemory);
         gcLineMenuItems.put(GCPreferences.USED_TENURED_MEMORY, menuItemUsedTenuredMemory);
@@ -617,6 +629,7 @@ public class GCViewerGui extends JFrame {
         menuItemUsedYoungMemory.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_used_young_memory"));
         menuItemUsedYoungMemory.setIcon(createMonoColoredImageIcon(UsedYoungRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemUsedYoungMemory.setActionCommand(GCPreferences.USED_YOUNG_MEMORY);
+        FontResizer.largeIncreaseFontSize(menuItemUsedYoungMemory);
         menuItemUsedYoungMemory.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemUsedYoungMemory);
         gcLineMenuItems.put(GCPreferences.USED_YOUNG_MEMORY, menuItemUsedYoungMemory);
@@ -626,6 +639,7 @@ public class GCViewerGui extends JFrame {
         menuItemInitialMarkLevel.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_initial_mark_level"));
         menuItemInitialMarkLevel.setIcon(createMonoColoredImageIcon(InitialMarkLevelRenderer.DEFAULT_LINEPAINT, 20, 20));
         menuItemInitialMarkLevel.setActionCommand(GCPreferences.INITIAL_MARK_LEVEL);
+        FontResizer.largeIncreaseFontSize(menuItemInitialMarkLevel);
         menuItemInitialMarkLevel.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemInitialMarkLevel);
         gcLineMenuItems.put(GCPreferences.INITIAL_MARK_LEVEL, menuItemInitialMarkLevel);
@@ -635,6 +649,7 @@ public class GCViewerGui extends JFrame {
         menuItemConcurrentGcBeginEnd.setToolTipText(LocalisationHelper.getString("main_frame_menuitem_hint_concurrent_collection_begin_end"));
         menuItemConcurrentGcBeginEnd.setIcon(createMonoColoredImageIcon(ConcurrentGcBegionEndRenderer.CONCURRENT_COLLECTION_BEGIN, 20, 20));
         menuItemConcurrentGcBeginEnd.setActionCommand(GCPreferences.CONCURRENT_COLLECTION_BEGIN_END);
+        FontResizer.largeIncreaseFontSize(menuItemConcurrentGcBeginEnd);
         menuItemConcurrentGcBeginEnd.addActionListener(viewMenuActionListener);
         viewMenu.add(menuItemConcurrentGcBeginEnd);
         gcLineMenuItems.put(GCPreferences.CONCURRENT_COLLECTION_BEGIN_END, menuItemConcurrentGcBeginEnd);

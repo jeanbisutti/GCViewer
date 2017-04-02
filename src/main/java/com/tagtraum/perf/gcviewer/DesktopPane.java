@@ -99,7 +99,7 @@ public class DesktopPane extends JDesktopPane {
      */
     private void drawVersionString(Graphics g, ImageIcon logoImage) {
         g.setColor(Color.LIGHT_GRAY);
-        g.setFont(new Font("Serif", Font.BOLD, 12));
+        g.setFont(new Font("Serif", Font.BOLD, 24));
 
         // use anti aliasing to draw string
         Graphics2D g2d = (Graphics2D)g;
